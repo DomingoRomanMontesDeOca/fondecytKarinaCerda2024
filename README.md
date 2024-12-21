@@ -7,6 +7,8 @@ Creado por Karina Cerda (Universidad de Talca)
 y 
  
  Domingo Román (Universidad de Santiago de Chile)
+
+ La distribución se hace de acuerdo con la licencia GNU cuyo texto se puede leer en: https://www.gnu.org/licenses/gpl-3.0.txt
  
  La funcionalidad se crea para el proyecto Fondecyt...
 
