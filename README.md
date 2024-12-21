@@ -4,7 +4,7 @@ diciembre 21 del 2024
 
 Creado por Karina Cerda (Universidad de Talca) 
 
-       y 
+y 
  
  Domingo Román (Universidad de Santiago de Chile)
  
@@ -44,9 +44,9 @@ Creado por Karina Cerda (Universidad de Talca)
  
  H7) imprime en la ventana de info el nuevo nombre del audio 
  
-     y un mensaje de "OK" respecto de la extensión o uno de "ATENCIÓN" 
+y un mensaje de "OK" respecto de la extensión o uno de "ATENCIÓN" 
      
-     en caso de problemas con el nombre del nuevo archivo
+en caso de problemas con el nombre del nuevo archivo
 
 I) borra del panel de objetos la lista de los audios
 
