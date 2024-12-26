@@ -9,6 +9,9 @@
 # y en su composición.
 
 
+# Esta versión 02 considera que los número de los informantes estaban precedidos por "P". 
+
+
 # A) Presenta tres mensajes en pausas al usuario
 
 pauseScript: "Este script creará archivos de respaldo y ajustará los nombres"
@@ -45,7 +48,7 @@ ene_archivos = Get number of strings
 # G) Imprime encabezado para el reporte
 
 writeInfoLine: "====="
-appendInfoLine: "Nuevos nombres de archivos"
+appendInfoLine: "Nuevos nombres de los ", ene_archivos, " archivos"
 
 
 # H) Iteración sobre cada audio original
@@ -67,33 +70,38 @@ for i to ene_archivos
 
 	nombre_audio_nuevo_2$ = replace$(audio$, "CONT", "CON", 1)
 
-	nombre_audio_nuevo_3$ = replace$(nombre_audio_nuevo_2$, "POST", "POS", 1)
+	nombre_audio_nuevo_2a$ = replace$(nombre_audio_nuevo_2$, "PEMI", "PEM", 1)
 
-	nombre_audio_nuevo_4$ = replace$(nombre_audio_nuevo_3$, "_1.", "_01.", 1)
+	nombre_audio_nuevo_3$ = replace$(nombre_audio_nuevo_2a$, "POST", "POS", 1)
 
-	nombre_audio_nuevo_5$ = replace$(nombre_audio_nuevo_4$, "_2.", "_02.", 1)
+	nombre_audio_nuevo_4$ = replace$(nombre_audio_nuevo_3$, "_P1_", "_01_", 1)
 
-	nombre_audio_nuevo_6$ = replace$(nombre_audio_nuevo_5$, "_3.", "_03.", 1)
+	nombre_audio_nuevo_5$ = replace$(nombre_audio_nuevo_4$, "_P2_", "_02_", 1)
 
-	nombre_audio_nuevo_7$ = replace$(nombre_audio_nuevo_6$, "_4.", "_04.", 1)
+	nombre_audio_nuevo_6$ = replace$(nombre_audio_nuevo_5$, "_P3_", "_03_", 1)
 
-	nombre_audio_nuevo_8$ = replace$(nombre_audio_nuevo_7$, "_5.", "_05.", 1)
+	nombre_audio_nuevo_7$ = replace$(nombre_audio_nuevo_6$, "_P4_", "_04_", 1)
 
-	nombre_audio_nuevo_9$ = replace$(nombre_audio_nuevo_8$, "_6.", "_06.", 1)
+	nombre_audio_nuevo_8$ = replace$(nombre_audio_nuevo_7$, "_P5_", "_05_", 1)
 
-	nombre_audio_nuevo_10$ = replace$(nombre_audio_nuevo_9$, "_7.", "_07.", 1)
+	nombre_audio_nuevo_9$ = replace$(nombre_audio_nuevo_8$, "_P6_", "_06_", 1)
 
-	nombre_audio_nuevo_11$ = replace$(nombre_audio_nuevo_10$, "_8.", "_08.", 1)
+	nombre_audio_nuevo_10$ = replace$(nombre_audio_nuevo_9$, "_P7_", "_07_", 1)
 
-	nombre_audio_nuevo_12$ = replace$(nombre_audio_nuevo_11$, "_9.", "_09.", 1)
+	nombre_audio_nuevo_11$ = replace$(nombre_audio_nuevo_10$, "_P8_", "_08_", 1)
 
-	nombre_audio_nuevo_13$ = replace$(nombre_audio_nuevo_12$, "PB", "PGB", 1)
+	nombre_audio_nuevo_12$ = replace$(nombre_audio_nuevo_11$, "_P9_", "_09_", 1)
 
-	nombre_audio_nuevo_14$ = replace$(nombre_audio_nuevo_13$, "PEMI", "PEM", 1)
+	nombre_audio_nuevo_13$ = replace$(nombre_audio_nuevo_12$, "_P10_", "_10_", 1)
+
+	nombre_audio_nuevo_14$ = replace$(nombre_audio_nuevo_13$, "_P11_", "_11_", 1)
+
+	nombre_audio_nuevo_15$ = replace$(nombre_audio_nuevo_14$, "_P12_", "_12_", 1)
+
+	nombre_audio_nuevo_16$ = replace$(nombre_audio_nuevo_15$, "PB", "PGB", 1)
 
 
-
-	numero$ = mid$(nombre_audio_nuevo_14$,36,2)
+	numero$ = mid$(nombre_audio_nuevo_16$,9,2)
 
 	if 
 ...    numero$ == "01" or numero$ == "03" or numero$ == "04" or numero$ == "09" 
@@ -103,7 +111,7 @@ for i to ene_archivos
 ... or numero$ == "35" or numero$ == "39" or numero$ == "40" or numero$ == "41"
 ... or numero$ == "42"
 
-	nombre_audio_nuevo_15$ = replace$(nombre_audio_nuevo_14$, numero$, numero$ + ss$, 1)
+	nombre_audio_nuevo_16$ = replace$(nombre_audio_nuevo_16$, numero$, numero$ + ss$, 1)
 
 	elsif
 ...    numero$ == "02" or numero$ == "05" or numero$ == "06" or numero$ == "07"
@@ -113,13 +121,13 @@ for i to ene_archivos
 ... or numero$ == "33" or numero$ == "34" or numero$ == "36" or numero$ == "37"
 ... or numero$ == "38"
 
-	nombre_audio_nuevo_15$ = replace$(nombre_audio_nuevo_14$, numero$, numero$ + ns$, 1)
+	nombre_audio_nuevo_16$ = replace$(nombre_audio_nuevo_16$, numero$, numero$ + ns$, 1)
 
 endif
 
 	# Guarda en fomarto .mp3
 
-	Save as highest quality MP3 file: "'directorio$'/'nombre_audio_nuevo_15$'"
+	Save as highest quality MP3 file: "'directorio$'/'nombre_audio_nuevo_16$'"
 
 	# Elimina del panel de objetos el audio original
 
@@ -133,15 +141,14 @@ endif
 
 	# Escribe el nombre nuevo del archivo y la extensión en caracteres
 
-	largo_nombre = length(nombre_audio_nuevo_15$)
+	largo_nombre = length(nombre_audio_nuevo_16$)
+	if largo_nombre == 43
 
-	if largo_nombre == 44
-
-		appendInfoLine: nombre_audio_nuevo_15$, tab$, "Longitud OK"
+		appendInfoLine: nombre_audio_nuevo_16$, tab$, "Longitud OK"
 
 	else
 
-		appendInfoLine: nombre_audio_nuevo_15$, tab$, "ATENCIÓN"
+		appendInfoLine: nombre_audio_nuevo_16$, tab$, "ATENCIÓN"
 
 	endif
 
